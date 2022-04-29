@@ -19,7 +19,7 @@
 	<h1>Log In [ login.jsp ]</h1>
 	<h2>로그인 해주세요</h2>
 	<br>
-	
+	<h1>나는 김채린 1조지 </h1>
 	<form class="login">
 		ID : <input type="text" name="userID">
 		PASSWORD : <input type="text" name="password">
