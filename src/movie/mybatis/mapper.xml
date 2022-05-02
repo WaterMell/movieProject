@@ -9,6 +9,10 @@
 		SELECT M_NAME FROM MOVIE
 	</select>
 	
+	<select id="reservedSelectAll" parameterType="string" resultType="string">
+		SELECT * FROM RESERVATION
+		<!--WHERE CUST_NUMBER = (SELECT ) -->
+	</select>
 	
 </mapper>
 

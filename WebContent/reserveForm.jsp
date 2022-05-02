@@ -2,7 +2,7 @@
 <%@page import="movie.dao.MovieDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--예약 입력 폼 선택받고 reserve_ok.jsp 파일로 데이터 넘겨주기 --%>
 
 <%

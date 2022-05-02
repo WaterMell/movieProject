@@ -15,6 +15,7 @@ import movie.command.LoginCommand;
 import movie.command.MovieCommand;
 import movie.command.MyinfoCommand;
 import movie.command.ReserveCommand;
+import movie.command.ReservedPageCommand;
 import movie.command.SignupCommand;
 
 @WebServlet("/controller")
@@ -38,6 +39,10 @@ public class FrontControllerCommand extends HttpServlet{
 			command = new ReserveCommand();
 		}else if ("myinfo".equals(type)) {
 			command = new MyinfoCommand();
+		}
+		
+		if ("reservedP".equals(type)) {
+			command = new ReservedPageCommand();
 		}
 		
 		

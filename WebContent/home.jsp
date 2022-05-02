@@ -16,7 +16,6 @@
 	function signupForm(){
 		location.href = "controller?type=signup";
 	}
-	
 
 	function movieList(){
 		location.href = "controller?type=movie";
