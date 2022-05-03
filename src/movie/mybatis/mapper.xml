@@ -5,8 +5,8 @@
 <mapper namespace="moviemake">
 	
 	<!-- 전체 영화 목록 조회 -->
-	<select id="movieSelectAll" resultType="string">
-		SELECT M_NAME FROM MOVIE
+	<select id="movieSelectAll" resultType="movie.vo.MovieVO">
+		SELECT M_NO, M_NAME, M_DIRECTOR, M_RUNNING_TIME, M_ACTOR, M_OPEN FROM MOVIE
 	</select>
 	
 	<!-- 로그인이 되면 파라미터로 CUSTOMER_ID 를 받는다 -->
@@ -24,7 +24,21 @@
 		WHERE R.SCHEDULE_NO = S.SCHEDULE_NO
 		AND CUSTOMER_ID = 'solbee99'
 	</select>
+	<!-- 영화 버튼 누르면 오늘 날짜 이후의 예정된 날짜가 나온다 -->
+	<select id="movieDate" resultType="string">	
+		SELECT SCHEDULE_DATE
+		FROM SCHEDULE
+		WHERE TO_DATE(SCHEDULE_DATE) >= SYSDATE
+	</select>
 	
+	<!-- 영화버튼 누르면 영화에 해당하는 상영날짜 리스트 출력 /영화제목 or 영화 번호 파라미터 고민-->
+	<select id="movieDay" resultType="movie.vo.ScheduleVO" parameterType="String">
+		SELECT SCHEDULE_NO, M_NO ,THEATER_NO, SCHEDULE_DATE, START_TIME FROM SCHEDULE
+		WHERE M_NO = (SELECT M_NO FROM MOVIE WHERE M_NO = #{m_no})
+	</select>
+	
+
+
 </mapper>
 
 

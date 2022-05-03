@@ -8,6 +8,7 @@ public class ReservationVO {
 	private String customer_id;
 	private String m_no;
 	
+	private String cust_number;
 	public String getReserv_no() {
 		return reserv_no;
 	}
@@ -29,10 +30,15 @@ public class ReservationVO {
 	public String getCustomer_id() {
 		return customer_id;
 	}
+	public String getCust_number() {
+		return cust_number;
+	}
 	public void setCustomer_id(String customer_id) {
 		this.customer_id = customer_id;
 	}
-	
+	public void setCust_number(String cust_number) {
+		this.cust_number = cust_number;
+	}
 	public String getM_no() {
 		return m_no;
 	}
