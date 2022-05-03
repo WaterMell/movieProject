@@ -16,7 +16,7 @@ public class ReservedPageCommand implements Command {
 		// TODO Auto-generated method stub
 		List<String> list = ReservationDAO.getReserveList();
 		
-		request.setAttribute("reservedList", list);
+		request.setAttribute("list", list);
 		
 		return "myinfo.jsp";
 	}

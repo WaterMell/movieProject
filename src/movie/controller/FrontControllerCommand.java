@@ -41,7 +41,7 @@ public class FrontControllerCommand extends HttpServlet{
 			command = new MyinfoCommand();
 		}
 		
-		if ("reservedP".equals(type)) {
+		if ("reserved".equals(type)) {
 			command = new ReservedPageCommand();
 		}
 		
