@@ -4,11 +4,10 @@ public class ReviewVO {
 	
 	private String review_no;
 	private String m_no;
-	private String cust_number;
+	private String customer_id;
 	private String review_content;
 	private String regdate;
 	private int score;
-	
 	
 	public String getReview_no() {
 		return review_no;
@@ -22,11 +21,11 @@ public class ReviewVO {
 	public void setM_no(String m_no) {
 		this.m_no = m_no;
 	}
-	public String getCust_number() {
-		return cust_number;
+	public String getCustomer_id() {
+		return customer_id;
 	}
-	public void setCust_number(String cust_number) {
-		this.cust_number = cust_number;
+	public void setCustomer_id(String customer_id) {
+		this.customer_id = customer_id;
 	}
 	public String getReview_content() {
 		return review_content;
@@ -47,11 +46,12 @@ public class ReviewVO {
 		this.score = score;
 	}
 	
-	
 	@Override
 	public String toString() {
-		return "ReviewVO [review_no=" + review_no + ", m_no=" + m_no + ", cust_number=" + cust_number
+		return "ReviewVO [review_no=" + review_no + ", m_no=" + m_no + ", customer_id=" + customer_id
 				+ ", review_content=" + review_content + ", regdate=" + regdate + ", score=" + score + "]";
 	}
 	
+	
+		
 }
