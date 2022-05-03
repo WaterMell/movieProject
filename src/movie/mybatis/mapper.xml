@@ -9,7 +9,21 @@
 		SELECT M_NO, M_NAME, M_DIRECTOR, M_RUNNING_TIME, M_ACTOR, M_OPEN FROM MOVIE
 	</select>
 	
-	
+	<!-- 로그인이 되면 파라미터로 CUSTOMER_ID 를 받는다 -->
+	<!--
+	<select id="reservedSelectAll" parameterType="string" resultType="string">
+		SELECT RESERV_NO, SEAT_NO, SCHEDULE_NO, CUSTOMER_ID
+		FROM RESERVATION
+	</select>
+	 -->
+		<!-- WHERE CUST_ =  -->
+	<select id="reservedSelectAll" resultType="string">
+		SELECT R.RESERV_NO, R.CUSTOMER_ID, R.SEAT_NO, 
+        S.SCHEDULE_DATE, S.START_TIME
+		FROM RESERVATION R, SCHEDULE S
+		WHERE R.SCHEDULE_NO = S.SCHEDULE_NO
+		AND CUSTOMER_ID = 'solbee99'
+	</select>
 	<!-- 영화 버튼 누르면 오늘 날짜 이후의 예정된 날짜가 나온다 -->
 	<select id="movieDate" resultType="string">	
 		SELECT SCHEDULE_DATE

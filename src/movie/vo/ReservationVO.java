@@ -5,8 +5,10 @@ public class ReservationVO {
 	private String reserv_no;
 	private String seat_no;
 	private String schedule_no;
-	private String cust_number;
+	private String customer_id;
 	private String m_no;
+	
+	private String cust_number;
 	public String getReserv_no() {
 		return reserv_no;
 	}
@@ -25,8 +27,14 @@ public class ReservationVO {
 	public void setSchedule_no(String schedule_no) {
 		this.schedule_no = schedule_no;
 	}
+	public String getCustomer_id() {
+		return customer_id;
+	}
 	public String getCust_number() {
 		return cust_number;
+	}
+	public void setCustomer_id(String customer_id) {
+		this.customer_id = customer_id;
 	}
 	public void setCust_number(String cust_number) {
 		this.cust_number = cust_number;
@@ -40,7 +48,10 @@ public class ReservationVO {
 	@Override
 	public String toString() {
 		return "ReservationVO [reserv_no=" + reserv_no + ", seat_no=" + seat_no + ", schedule_no=" + schedule_no
-				+ ", cust_number=" + cust_number + ", m_no=" + m_no + "]";
+				+ ", customer_id=" + customer_id + ", m_no=" + m_no + "]";
 	}
-
+	
+	
+	
+	
 }

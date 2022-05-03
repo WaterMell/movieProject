@@ -9,12 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+import movie.command.CanceledCommand;
 import movie.command.Command;
 import movie.command.LoginCommand;
 import movie.command.MovieCommand;
 import movie.command.MyinfoCommand;
 import movie.command.ReserveCommand;
+import movie.command.ReservedPageCommand;
 import movie.command.SignupCommand;
 
 @WebServlet("/controller")
@@ -38,6 +39,10 @@ public class FrontControllerCommand extends HttpServlet{
 			command = new ReserveCommand();
 		}else if ("myinfo".equals(type)) {
 			command = new MyinfoCommand();
+		} else if ("reserved".equals(type)) {
+			command = new ReservedPageCommand();
+		} else if ("canceled".equals(type)) {
+			command = new CanceledCommand();
 		}
 		
 		
