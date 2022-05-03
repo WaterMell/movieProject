@@ -1,3 +1,5 @@
+<%@page import="movie.dao.ReservationDAO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -26,43 +28,51 @@
 	});
 
 	function go_reservedP() {
-		document.href = "controller?type=reserved"
+		location.href = "controller?type=reserved";
 	}
 
 	function go_canceled() {
-		document.href = "controller?type=canceled"
+		location.href = "controller?type=canceled";
 	}
+	function go_modify() {
+		location.href = "controller?type=modify";
+	}
+	function go_AcoDel() {
+		location.href = "controller?type=AcoDel";
+	} 
 </script>
 <title>MyPage</title>
 <style>
-.subMenu1 {
-	display: none;
-}
-
-.subMenu2 {
-	display: none;
-}
-
-ul, ol {
-	list-style: none;
-}
-
-li>a>span {
-	vertical-align: top;
-	white-space: nowrap;
-}
-
-li>ul>li>a>span {
-	white-space: nowrap;
-}
-
-.dept01 {
-	display: flex;
-}
-
-.dept02 {
-	display: flex;
-}
+	.subMenu1 {
+		display: none;
+	}
+	
+	.subMenu2 {
+		display: none;
+	}
+	
+	ul, ol {
+		list-style: none;
+	}
+	
+	li>a>span {
+		vertical-align: top;
+		white-space: nowrap;
+	}
+	
+	li>ul>li>a>span {
+		white-space: nowrap;
+	}
+	
+	.dept01 {
+		display: flex;
+	}
+	
+	.dept02 {
+		display: flex;
+	}
+	
+	.menu1 { box-sizing: 3px; }
 </style>
 </head>
 <body>
@@ -77,10 +87,10 @@ li>ul>li>a>span {
 				</a>
 				<ul class="subMenu1">
 					<li>
-						<p onclick="go_reservedP()">예매내역</p>
+						<a style=cursor:pointer; onclick="go_reservedP()">예매내역</a>
 					</li>
 					<li>
-						<p onclick="go_canceled()">취소내역</p>
+						<a style=cursor:pointer; onclick="go_canceled()">취소내역</a>
 					</li>
 				</ul>
 			</li>
@@ -90,18 +100,14 @@ li>ul>li>a>span {
 				</a>
 				<ul class="subMenu2">
 					<li id="asd">
-						비밀번호 변경
+						<a style=cursor:pointer; onclick="go_modify()">비밀번호 변경</a>
 					</li>
 					<li id="asd">
-						연락처 변경
-					</li>
-					<li id="asd">
-						탈퇴
+						<a style=cursor:pointer; onclick="go_AcoDel()">탈퇴</a>
 					</li>
 				</ul>
 			</li>
 		</ul>
 	</div>
-
 </body>
 </html>
