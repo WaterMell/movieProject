@@ -1,3 +1,7 @@
+<%@page import="java.util.Map"%>
+<%@page import="movie.vo.SeatVO"%>
+<%@page import="movie.dao.SeatDAO"%>
+<%@page import="java.util.HashMap"%>
 <%@page import="movie.vo.MovieVO"%>
 <%@page import="java.time.LocalDate"%>
 <%@page import="java.util.List"%>
@@ -8,10 +12,15 @@
 <%--예약 입력 폼 선택받고 reserve_ok.jsp 파일로 데이터 넘겨주기 --%>
 
 <%
-   List<MovieVO> list = MovieDAO.movieList();
-   //System.out.println(">>list : " + list);
+	List<MovieVO> list = MovieDAO.movieList();
+	//System.out.println(">>list : " + list);
    
-   pageContext.setAttribute("movieList", list);
+   pageContext.setAttribute("movieList", list); 
+   
+   Map<String, Object> param = new HashMap();
+   
+   
+   //List<SeatVO> seats = SeatDAO.getSeatData(no, date, time);
 %>
 <!DOCTYPE html>
 <html>
@@ -21,9 +30,27 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 
-	$(function(){
-		$(".getMovieDay").click(getMovieDays());
+	  $(function(){
+		$(".getMovieDay").click(function(){
+			$(this).addClass('selected');
+		});
+	});  
+	 
+	$(document).on("click",".getSeat",function(){
+		alert("getSeat 실행~");
+		console.log($(this).text());
+		let schedule_date = $(this).text().substring(0,10);
+		let start_time = $(this).text().substring(10).trim();
+		console.log("schedule_date : " + schedule_date);
+		console.log("start_time : " + start_time);
+		
+		
+		
+		//String schedule_date = $(this);
+		//System.out.println("schedule_date : " + schedule_date);
+		 
 	});
+	
 	function getMovieDays(no){  //String no 입니닷
 		alert(">>getMovieDays() 실행~ ");
 		
@@ -41,8 +68,7 @@
 	            let alist = data.list;
 	            $.each(alist,function(index, member){
 	               htmlTag += "<tr>";
-	               htmlTag += "<td>"+this["schedule_date"]+"</td>"
-	               htmlTag += "<td>"+this["start_time"]+"</td>"
+	               htmlTag += "<td><button class=\"getMovieDay getSeat\">"+this["schedule_date"] + "   "+ this["start_time"]+"</button></td>"
 	               htmlTag += "</tr>";
 	            });
 	            $("#tbody").html(htmlTag);
@@ -58,10 +84,27 @@
 	
 </script>
 <style>
-  	#title1 {
+  	.title {
   	float: left;
-  	margin-right : 200px;
+  	margin-right : 50px;
  	}
+ 	
+	div h3{
+	display: inline-block;
+	}
+	
+	#cnt{
+	background-color: #faebd7;
+	}
+	
+	.getMovieDay{
+	width: 100%;
+	background-color: #ffff96;
+	}
+	
+	.selected{
+	background-color: #ffdc46;
+	}
   
 
 </style>
@@ -69,9 +112,16 @@
 <body>
    <h1>CINEMA RESERVATION</h1>
    <h2>영화예약</h2>
-   
-<div class="frame" id="schedule">
-   <table id="title1" border>
+
+<div id="cnt">
+	<h3>인원선택</h3>
+   <input type="radio" name="cnt" value="0" checked>0명
+   <input type="radio" name="cnt" value="1">1명
+   <input type="radio" name="cnt" value="2">3명
+   <input type="radio" name="cnt" value="3">4명
+</div>
+
+   <table class="title" border>
       <thead>
          <tr>
             <th>영화</th>
@@ -86,21 +136,22 @@
       </tbody>
    </table>
    
-   <table id="title2" border>
+   <table class="title" border>
       <thead>
          <tr>
-            <th>날짜</th>   
-            <th>시간</th>
+            <th>날짜 시간</th>   
          </tr>
       </thead>
       <tbody id="tbody">
-       	<tr>
-       		<td>2022-04-29(샘플링)</td>
-       		<td>09:00(샘플링)</td>
-       	</tr>
       </tbody>
     </table>
-</div>
+<form action="controller?type=seatinfo" method="post">
+	<input type="hidden" name="no" value="${movieList.m_no }">
+	<input type="hidden" name="cnt" value=cnt>
+	<input type="hidden" name="date" value=schedule_date>
+	<input type="hidden" name="time" value=start_time>
+	<input type="submit" value="좌석 선택">
+</form>
 
 </body>
 </html>

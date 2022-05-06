@@ -61,7 +61,8 @@ public class getMovieDaysController extends HttpServlet {
 			result.append("\"schedule_no\" : \""+ vo.getSchedule_no() + "\",");
 			result.append("\"m_no\" : \""+ vo.getSchedule_no() + "\",");
 			result.append("\"theater_no\" : \""+ vo.getTheater_no() + "\",");
-			result.append("\"schedule_date\" : \""+ vo.getSchedule_date() + "\"");
+			result.append("\"schedule_date\" : \""+ vo.getSchedule_date() + "\",");
+			result.append("\"start_time\" : \""+ vo.getStart_time() + "\"");
 			result.append("},");
 		}
 		result.delete(result.length() - 1, result.length());
@@ -69,6 +70,9 @@ public class getMovieDaysController extends HttpServlet {
 		
 		return result.toString();
 	}
+	
+	
+	
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

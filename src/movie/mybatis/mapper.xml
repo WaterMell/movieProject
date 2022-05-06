@@ -17,6 +17,7 @@
 	</select>
 	 -->
 		<!-- WHERE CUST_ =  -->
+		
 	<select id="reservedSelectAll" resultType="string">
 		SELECT R.RESERV_NO, R.CUSTOMER_ID, R.SEAT_NO, 
         S.SCHEDULE_DATE, S.START_TIME
@@ -24,20 +25,31 @@
 		WHERE R.SCHEDULE_NO = S.SCHEDULE_NO
 		AND CUSTOMER_ID = 'solbee99'
 	</select>
-	<!-- 영화 버튼 누르면 오늘 날짜 이후의 예정된 날짜가 나온다 -->
-	<select id="movieDate" resultType="string">	
-		SELECT SCHEDULE_DATE
-		FROM SCHEDULE
-		WHERE TO_DATE(SCHEDULE_DATE) >= SYSDATE
-	</select>
 	
-	<!-- 영화버튼 누르면 영화에 해당하는 상영날짜 리스트 출력 /영화제목 or 영화 번호 파라미터 고민-->
+	<!-- 영화버튼 누르면 영화에 해당하는 ScheduleVO 리스트 출력 / 영화 번호 파라미터 -->
 	<select id="movieDay" resultType="movie.vo.ScheduleVO" parameterType="String">
 		SELECT SCHEDULE_NO, M_NO ,THEATER_NO, SCHEDULE_DATE, START_TIME FROM SCHEDULE
 		WHERE M_NO = (SELECT M_NO FROM MOVIE WHERE M_NO = #{m_no})
 	</select>
 	
-
+	<!-- 영화버튼 누르면 영화가 상영되는 날짜 리스트 출력(안씀)  -->
+	<select id="getDate" resultType="String" parameterType="String">
+		SELECT DISTINCT SCHEDULE_DATE FROM SCHEDULE
+		WHERE M_NO = #{m_no}
+	</select>
+	
+	<!-- 날짜버튼 누르면 해당영화&해당 날짜에 상영하는 시간 출력(안씀) -->
+	<select id="getTime" resultType="String" parameterType="String">
+		SELECT START_TIME FROM SCHEDULE
+		WHERE M_NO = #{m_no} AND SCHEDULE_DATE = #{schedule_date}
+	</select>
+	
+	<!--영화 선택, 시간 선택, 인원 선택 후 좌석 정보 가져오는 SQL -->
+	<select id="getSeat" resultType="movie.vo.SeatVO" parameterType="hashmap">
+		SELECT SEAT_PK, SEAT_NO, THEATER_NO, SEAT_ASS FROM SEAT
+		WHERE THEATER_NO = (SELECT THEATER_NO FROM SCHEDULE 
+						WHERE M_NO = #{m_no} AND SCHEDULE_DATE=#{schedule_date} AND START_TIME=#{start_time})
+	</select>
 
 </mapper>
 

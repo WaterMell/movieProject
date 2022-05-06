@@ -16,6 +16,7 @@ import movie.command.MovieCommand;
 import movie.command.MyinfoCommand;
 import movie.command.ReserveCommand;
 import movie.command.ReservedPageCommand;
+import movie.command.SeatCommand;
 import movie.command.SignupCommand;
 
 @WebServlet("/controller")
@@ -43,6 +44,8 @@ public class FrontControllerCommand extends HttpServlet{
 			command = new ReservedPageCommand();
 		} else if ("canceled".equals(type)) {
 			command = new CanceledCommand();
+		} else if ("seatinfo".equals(type)) {
+			command = new SeatCommand();
 		}
 		
 		
