@@ -71,13 +71,10 @@ public class getMovieDaysController extends HttpServlet {
 		return result.toString();
 	}
 	
-	
-	
-
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("> GetJsonMembersController.doPost() 실행~");
-		doGet(request, response);
-	}
+   
+   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      System.out.println("> GetJsonMembersController.doPost() 실행~");
+      doGet(request, response);
+   }
 
 }

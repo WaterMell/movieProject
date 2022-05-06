@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 <%@page import="java.util.Map"%>
 <%@page import="movie.vo.SeatVO"%>
 <%@page import="movie.dao.SeatDAO"%>
 <%@page import="java.util.HashMap"%>
+=======
+>>>>>>> refs/remotes/origin/solbee-branch
 <%@page import="movie.vo.MovieVO"%>
 <%@page import="java.time.LocalDate"%>
 <%@page import="java.util.List"%>
@@ -18,8 +21,6 @@
    pageContext.setAttribute("movieList", list); 
    
    Map<String, Object> param = new HashMap();
-   
-   
    //List<SeatVO> seats = SeatDAO.getSeatData(no, date, time);
 %>
 <!DOCTYPE html>
@@ -30,6 +31,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 
+<<<<<<< HEAD
 	  $(function(){
 		$(".getMovieDay").click(function(){
 			$(this).addClass('selected');
@@ -82,8 +84,46 @@
 	      });
 	   }
 	
+=======
+   /* $(function(){
+      $(".getMovieDay").click(getMovieDays());
+   }); */
+   function getMovieDays(no){  //String no 입니닷
+      alert(">>getMovieDays() 실행~ ");
+      
+      $.ajax("getMovieDays",{
+         type : "get",
+         dataType : "json",
+         data : "m_no=" +no ,
+         success : function(data){
+            alert("Ajax 처리 성공 - 응답받은 데이터 : " + data);
+            console.log(data);
+            console.log(data.list);
+                  
+               //전달받은 JSON 데이터 처리
+            let htmlTag = "";
+            let alist = data.list;
+            $.each(alist,function(index, member){
+                  htmlTag += "<tr>";
+                  htmlTag += "<td>"+this["schedule_date"]+"</td>"
+                  htmlTag += "<td>"+this["start_time"]+"</td>"
+                  htmlTag += "</tr>";
+               });
+               $("#tbody").html(htmlTag);
+            },
+            error : function(jqXHR, textStatus, errorThrown){
+               alert("Ajax 처리 실패 : \n"
+                     + "jqXHR.readyState : " + jqXHR.readyState + "\n"
+                     + "textStatus : " + textStatus + "\n"
+                     + "errorThrown : " + errorThrown);
+            }
+         });
+      }
+   
+>>>>>>> refs/remotes/origin/solbee-branch
 </script>
 <style>
+<<<<<<< HEAD
   	.title {
   	float: left;
   	margin-right : 50px;
@@ -105,6 +145,12 @@
 	.selected{
 	background-color: #ffdc46;
 	}
+=======
+     #title1 {
+     float: left;
+     margin-right : 200px;
+    }
+>>>>>>> refs/remotes/origin/solbee-branch
   
 
 </style>
@@ -112,6 +158,7 @@
 <body>
    <h1>CINEMA RESERVATION</h1>
    <h2>영화예약</h2>
+<<<<<<< HEAD
 
 <div id="cnt">
 	<h3>인원선택</h3>
@@ -119,6 +166,38 @@
    <input type="radio" name="cnt" value="1">1명
    <input type="radio" name="cnt" value="2">3명
    <input type="radio" name="cnt" value="3">4명
+=======
+   
+<div class="frame" id="schedule">
+   <table id="title1" border>
+      <thead>
+         <tr>
+            <th>영화</th>
+         </tr>
+      </thead>
+      <tbody>
+      <c:forEach var="movieList" items="${movieList }">
+         <tr>
+            <td><button class="getMovieDay" onclick="getMovieDays(${movieList.m_no})" >${movieList.m_name }</button></td>
+         </tr>
+      </c:forEach>
+      </tbody>
+   </table>
+   
+   <table id="title2" border>
+      <thead>
+         <tr>
+            <th>날짜</th>   
+            <th>시간</th>
+         </tr>
+      </thead>
+      <tbody id="tbody">
+          <tr>
+             <td colspan="2">2022-04-29(샘플링) 09:00(샘플링)</td>
+          </tr>
+      </tbody>
+    </table>
+>>>>>>> refs/remotes/origin/solbee-branch
 </div>
 
    <table class="title" border>

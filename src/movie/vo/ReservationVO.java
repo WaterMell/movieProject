@@ -1,5 +1,7 @@
 package movie.vo;
 
+import java.util.List;
+
 public class ReservationVO {
 	
 	private String reserv_no;
@@ -50,9 +52,6 @@ public class ReservationVO {
 		return reserv_cnt;
 	}
 	
-	public void setReserv_cnt(int reserv_cnt) {
-		this.reserv_cnt = reserv_cnt;
-	}
 	
 	@Override
 	public String toString() {
@@ -61,6 +60,10 @@ public class ReservationVO {
 				+ reserv_cnt + "]";
 	}
 	
-	}
 	
 	
+	
+	
+	
+	
+}

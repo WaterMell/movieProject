@@ -27,53 +27,19 @@
 		});
 	});
 
-	
+	function go_reservedP() {
+		location.href = "controller?type=reserved";
+	}
+
+	function go_canceled() {
+		location.href = "controller?type=canceled";
+	}
 	function go_modify() {
 		location.href = "controller?type=modify";
 	}
 	function go_AcoDel() {
 		location.href = "controller?type=AcoDel";
-	}
-
-	$(document).ready(function(){
-		$("#reserved").click(getReserved);
-	});
-	
-	// id parameter로 받아야함
-	function getReserved() {
-		alert(">> getReserved() 실행");
-
-		$.ajax("getReserved", {
-			type : "get",
-			dataType : "json",
-			success : function(data) {
-				alert("Ajax 처리 성공 - 응답답은 데이터 : " + data);
-				console.log(data);
-				console.log(data.list);
-
-				let htmlTag = "";
-				let alist = data.list;
-				$.each(alist, function(index, member) {
-					htmlTag += "<h3>" + "예매 내역" + "</h3>";
-					htmlTag += "<li>" + this.schedule_date + "</li>";
-					htmlTag += "<li>" + this.start_time + "</li>";
-					htmlTag += "<li>" + this.m_name + "</li>";
-					htmlTag += "<li>" + this.m_running_time + "</li>";
-					htmlTag += "<li>" + this.theater_no + "</li>";
-					htmlTag += "<li>" + this.seat_no + "</li>";
-					htmlTag += "<li>" + this.reserv_no + "</li>";
-				});
-				$("#theReservList").html(htmlTag);
-			},
-            error : function(jqXHR, textStatus, errorThrown){
-                alert("Ajax 처리 실패 : \n"
-                      + "jqXHR.readyState : " + jqXHR.readyState + "\n"
-                      + "textStatus : " + textStatus + "\n"
-                      + "errorThrown : " + errorThrown);
-			}
-		});
-	}
->>>>>>> refs/remotes/origin/solbee-branch
+	} 
 </script>
 <title>MyPage</title>
 <style>
@@ -107,8 +73,6 @@
 	}
 	
 	.menu1 { box-sizing: 3px; }
-	
-	#theReservList { border-style: solid; }
 </style>
 </head>
 <body>
@@ -127,7 +91,6 @@
 					</li>
 					<li>
 						<a style=cursor:pointer; onclick="go_canceled()">취소내역</a>
-						<a id="reserved" style=cursor:pointer;>예매내역</a>
 					</li>
 				</ul>
 			</li>
@@ -146,11 +109,5 @@
 			</li>
 		</ul>
 	</div>
-	<hr>
-	<ul id="theReservList">
-		<li>
-			2022-05-04 9:00 닥터스트레인지 77분 1관 좌석번호28번 예약번호 1번(샘플 데이터)
-		</li>
-	</ul>
 </body>
 </html>

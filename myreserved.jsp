@@ -15,27 +15,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <title>myreserved [ myreserved.jsp ]</title>
 <script>
-
-</script>
-<style>
-	ul { list-style: none; }
 	
-	#theList { border: 1px; }
-</style>
-
+	
+</script>
 </head>
 <body>
 	<h1>마이페이지</h1>
 	<h2>예약내역</h2>
-
-	<ul>
-		<li>
-			<a>2022-05-04 9:00 닥터스트레인지 77분 1관 좌석번호28번 예약번호 1번(샘플 데이터)</a>
-		</li>
-	</ul>
-
+	
+	<c:forEach var="vo" items="${reservedSelectAll }">
+		<li>${reservedSelectAll }</li>
+	</c:forEach>
+	
 </body>
 </html>

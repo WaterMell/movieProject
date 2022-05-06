@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import movie.mybatis.DBService;
@@ -37,4 +39,12 @@ public class ScheduleDAO {
 		List<String> times = ss.selectList("moviemake.getTime", map);
 		return times;
 	}
+	
+	public static List<ScheduleVO> getScheduleAll() {
+		SqlSession ss = DBService.getFactory().openSession();
+		List<ScheduleVO> list = ss.selectList("moviemake.scheduleAll");
+		ss.close();
+		return list;
+	}
+	
 }
