@@ -16,6 +16,7 @@
 	function signupForm(){
 		location.href = "controller?type=signup";
 	}
+	
 
 	function movieList(){
 		location.href = "controller?type=movie";
@@ -35,7 +36,6 @@
 </head>
 <body>
 	<h1>CINEMA</h1>
-	
 	<button onclick="loginGo()">로그인</button>
 	<button onclick="signupForm()">회원가입</button>
 	<button onclick="movieList()">영화</button>

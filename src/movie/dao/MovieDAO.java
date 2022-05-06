@@ -5,15 +5,17 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import movie.mybatis.DBService;
+import movie.vo.MovieVO;
 
 public class MovieDAO {
 	
 	//영화 목록 전체 조회
-	public static List<String> movieList(){
+	public static List<MovieVO> movieList(){
 		SqlSession ss = DBService.getFactory().openSession();
-		List<String> list = ss.selectList("moviemake.movieSelectAll");
+		List<MovieVO> list = ss.selectList("moviemake.movieSelectAll");
 		ss.close();
 		return list;
 	}
+
 
 }
